@@ -162,78 +162,29 @@ function TimelineCard({ item, index }) {
           initial={{ opacity: 0, x: isLeft ? 40 : -40 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.15 }}
+          className="tl-card"
           style={{
             width: '100%',
             background: 'rgba(255,255,255,0.04)',
             backdropFilter: 'blur(12px)',
             border: `1px solid ${accentColor}25`,
             borderRadius: '1rem',
-            padding: '0.85rem 1.25rem',
             position: 'relative',
           }}
         >
-          {/* Period */}
-          <div
-            style={{
-              fontSize: '0.75rem',
-              color: 'rgba(255,255,255,0.4)',
-              fontFamily: 'var(--font-mono)',
-              marginBottom: '0.3rem',
-            }}
-          >
-            {item.period}
-          </div>
+          <div className="tl-period">{item.period}</div>
 
-          {/* Title + Subtitle on same line */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'baseline',
-              gap: '0.5rem',
-              flexWrap: 'wrap',
-              marginBottom: '0.3rem',
-            }}
-          >
-            <span
-              style={{
-                fontSize: '1rem',
-                fontWeight: 600,
-                color: '#fff',
-              }}
-            >
-              {item.title}
-            </span>
-            <span
-              style={{
-                fontSize: '0.8rem',
-                color: accentColor,
-                opacity: 0.85,
-              }}
-            >
+          <div className="tl-title-row">
+            <span className="tl-title">{item.title}</span>
+            <span className="tl-subtitle" style={{ color: accentColor }}>
               {item.subtitle}
             </span>
           </div>
 
-          {/* Organization + Location on same line */}
           <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap' }}>
-            <span
-              style={{
-                fontSize: '0.875rem',
-                color: 'rgba(255,255,255,0.65)',
-                fontWeight: 500,
-              }}
-            >
-              {item.organization}
-            </span>
+            <span className="tl-org">{item.organization}</span>
             {item.location && (
-              <span
-                style={{
-                  fontSize: '0.75rem',
-                  color: 'rgba(255,255,255,0.35)',
-                }}
-              >
-                , {item.location}
-              </span>
+              <span className="tl-location">, {item.location}</span>
             )}
           </div>
         </motion.div>
@@ -336,6 +287,26 @@ export default function Timeline() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        .tl-card { padding: 0.85rem 1.25rem; }
+        .tl-period { font-size: 0.75rem; color: rgba(255,255,255,0.4); font-family: var(--font-mono); margin-bottom: 0.3rem; }
+        .tl-title-row { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
+        .tl-title { font-size: 1rem; font-weight: 600; color: #fff; }
+        .tl-subtitle { font-size: 0.8rem; opacity: 0.85; }
+        .tl-org { font-size: 0.875rem; color: rgba(255,255,255,0.65); font-weight: 500; }
+        .tl-location { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+
+        @media (max-width: 767px) {
+          .tl-card { padding: 0.6rem 0.85rem; }
+          .tl-period { font-size: 0.65rem; margin-bottom: 0.2rem; }
+          .tl-title-row { gap: 0.3rem; margin-bottom: 0.2rem; }
+          .tl-title { font-size: 0.82rem; }
+          .tl-subtitle { font-size: 0.7rem; }
+          .tl-org { font-size: 0.75rem; }
+          .tl-location { font-size: 0.65rem; }
+        }
+      `}</style>
     </section>
   )
 }
