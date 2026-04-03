@@ -139,16 +139,27 @@ export default function Hero() {
 
           <motion.p
             variants={fadeInUp}
+            className="tagline-container"
             style={{
               fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
               color: 'rgba(255,255,255,0.85)',
-              minHeight: '1.8em',
               margin: 0,
               fontFamily: 'var(--font-mono)',
             }}
           >
             <TypewriterText texts={personalInfo.taglines} />
           </motion.p>
+
+          <style>{`
+            .tagline-container {
+              min-height: 1.8em;
+            }
+            @media (max-width: 767px) {
+              .tagline-container {
+                min-height: 5em;
+              }
+            }
+          `}</style>
 
           <motion.div
             variants={fadeInUp}
