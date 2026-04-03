@@ -30,8 +30,8 @@ function SkillBadge({ skill }) {
         userSelect: 'none',
         transition: 'border-color 0.2s',
       }}
-      onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(34,211,238,0.35)'}
-      onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'}
+      onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'rgba(34,211,238,0.35)')}
+      onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
     >
       <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>{skill.icon}</span>
       <span style={{ fontSize: '0.875rem', fontWeight: 500, color: 'rgba(255,255,255,0.85)' }}>
@@ -46,12 +46,15 @@ export default function Skills() {
   const isInView = useInView(ref, sectionViewport)
   const [activeCategory, setActiveCategory] = useState('All')
 
-  const filtered = activeCategory === 'All'
-    ? skills
-    : skills.filter((s) => s.category === activeCategory)
+  const filtered =
+    activeCategory === 'All' ? skills : skills.filter((s) => s.category === activeCategory)
 
   return (
-    <section id="skills" className="section-padding" style={{ background: 'rgba(255,255,255,0.015)' }}>
+    <section
+      id="skills"
+      className="section-padding"
+      style={{ background: 'rgba(255,255,255,0.015)' }}
+    >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
         <motion.div
@@ -61,7 +64,16 @@ export default function Skills() {
           animate={isInView ? 'visible' : 'hidden'}
           style={{ marginBottom: '2rem' }}
         >
-          <p style={{ color: '#22d3ee', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+          <p
+            style={{
+              color: '#22d3ee',
+              fontSize: '0.85rem',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              marginBottom: '0.5rem',
+            }}
+          >
             What I work with
           </p>
           <h2 className="section-title">Skills & Tech Stack</h2>
@@ -90,7 +102,8 @@ export default function Skills() {
                 border: '1px solid',
                 transition: 'all 0.2s',
                 background: activeCategory === cat ? 'rgba(168,85,247,0.2)' : 'transparent',
-                borderColor: activeCategory === cat ? 'rgba(168,85,247,0.6)' : 'rgba(255,255,255,0.15)',
+                borderColor:
+                  activeCategory === cat ? 'rgba(168,85,247,0.6)' : 'rgba(255,255,255,0.15)',
                 color: activeCategory === cat ? '#a855f7' : 'rgba(255,255,255,0.55)',
               }}
             >

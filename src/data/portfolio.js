@@ -23,7 +23,16 @@ export const projects = [
     title: 'CVS Health - Photo Retails',
     description:
       'Led Android-side integration of the IMG.LY image editing engine at CVS Health, building native features within a Flutter hybrid app. Architected with Clean Architecture and MVVM, implemented Hilt DI, Retrofit REST integrations, and maintained quality through JUnit, Espresso, and automated CI/CD pipelines via GitHub Actions and CircleCI.',
-    tags: ['Android', 'Kotlin', 'Flutter', 'Clean Architecture', 'MVVM', 'Hilt', 'Retrofit', 'CI/CD'],
+    tags: [
+      'Android',
+      'Kotlin',
+      'Flutter',
+      'Clean Architecture',
+      'MVVM',
+      'Hilt',
+      'Retrofit',
+      'CI/CD',
+    ],
     image: `${base}/assets/android-flutter.svg`,
     githubUrl: null,
     liveUrl: 'https://play.google.com/store/apps/details?id=com.cvs.launchers.cvs&hl=en_US',
@@ -34,7 +43,18 @@ export const projects = [
     title: 'POS Order Application',
     description:
       'Designed and developed native Android apps for restaurant waiter management and POS systems. Built intuitive UIs with Jetpack Compose following Material 3 principles, implemented WebSocket for real-time order and table updates, and integrated Firebase push notifications. Followed MVVM architecture with Hilt DI, Kotlin Coroutines, and Flow for reactive programming, with CI/CD via GitHub Actions and Jenkins.',
-    tags: ['Android', 'Kotlin', 'Jetpack Compose', 'Material 3', 'WebSocket', 'Firebase', 'MVVM', 'Hilt', 'Kotlin Flow', 'CI/CD'],
+    tags: [
+      'Android',
+      'Kotlin',
+      'Jetpack Compose',
+      'Material 3',
+      'WebSocket',
+      'Firebase',
+      'MVVM',
+      'Hilt',
+      'Kotlin Flow',
+      'CI/CD',
+    ],
     image: `${base}/assets/android-logo.png`,
     githubUrl: null,
     liveUrl: null,
@@ -45,7 +65,18 @@ export const projects = [
     title: 'POS Printer Application',
     description:
       'Built a native Android app for receipt and bill printing in restaurant POS environments. Integrated Bluetooth printer discovery and connection, designed receipt preview screens with Jetpack Compose following Material 3 principles, and managed print queues with real-time status updates. Followed MVVM architecture with Hilt DI, Kotlin Coroutines, and Flow, with CI/CD via GitHub Actions and Jenkins.',
-    tags: ['Android', 'Kotlin', 'Jetpack Compose', 'Material 3', 'Bluetooth', 'Firebase', 'MVVM', 'Hilt', 'Kotlin Flow', 'CI/CD'],
+    tags: [
+      'Android',
+      'Kotlin',
+      'Jetpack Compose',
+      'Material 3',
+      'Bluetooth',
+      'Firebase',
+      'MVVM',
+      'Hilt',
+      'Kotlin Flow',
+      'CI/CD',
+    ],
     image: `${base}/assets/android-logo.png`,
     githubUrl: null,
     liveUrl: null,
@@ -55,8 +86,16 @@ export const projects = [
     id: 4,
     title: 'KooBits - Parent App',
     description:
-      'Designed and developed native Android features for a kids\' e-learning platform, building scalable experiences for Kids, Parents, and Teachers. Applied Material Design principles for intuitive UI, collaborated with backend engineers on API integration, and provided actionable metrics via Google Play Console and App Store Connect. Contributed to migrating the existing Android app to Flutter while maintaining performance and functionality.',
-    tags: ['Android', 'Kotlin', 'Flutter', 'Material Design', 'REST APIs', 'CI/CD', 'Google Play Console'],
+      "Designed and developed native Android features for a kids' e-learning platform, building scalable experiences for Kids, Parents, and Teachers. Applied Material Design principles for intuitive UI, collaborated with backend engineers on API integration, and provided actionable metrics via Google Play Console and App Store Connect. Contributed to migrating the existing Android app to Flutter while maintaining performance and functionality.",
+    tags: [
+      'Android',
+      'Kotlin',
+      'Flutter',
+      'Material Design',
+      'REST APIs',
+      'CI/CD',
+      'Google Play Console',
+    ],
     image: `${base}/assets/android-flutter.svg`,
     githubUrl: null,
     liveUrl: 'https://play.google.com/store/apps/details?id=com.koobits.koobits&hl=en_US',
@@ -66,7 +105,7 @@ export const projects = [
     id: 5,
     title: 'KooBits - Student App',
     description:
-      'Built engaging native Android features for the student-facing side of KooBits\' kids\' e-learning platform. Designed gamified learning experiences with quizzes, XP rewards, streaks, badges, and leaderboards using Material Design principles. Collaborated with backend engineers on API integration and contributed to migrating the Android app to Flutter while maintaining performance and functionality.',
+      "Built engaging native Android features for the student-facing side of KooBits' kids' e-learning platform. Designed gamified learning experiences with quizzes, XP rewards, streaks, badges, and leaderboards using Material Design principles. Collaborated with backend engineers on API integration and contributed to migrating the Android app to Flutter while maintaining performance and functionality.",
     tags: ['Android', 'Kotlin', 'Material Design', 'REST APIs', 'CI/CD', 'Google Play Console'],
     image: `${base}/assets/android-logo.png`,
     githubUrl: null,
@@ -182,4 +221,13 @@ export const skills = [
   { name: 'WorkManager', icon: '⚙️', category: 'Android' },
 ]
 
-export const skillCategories = ['All', 'Android', 'Cross-Platform', 'Backend', 'Testing', 'DevOps', 'AWS', 'IDEs']
+export const skillCategories = [
+  'All',
+  'Android',
+  'Cross-Platform',
+  'Backend',
+  'Testing',
+  'DevOps',
+  'AWS',
+  'IDEs',
+]

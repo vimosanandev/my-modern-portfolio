@@ -139,18 +139,20 @@ function TimelineCard({ item, index }) {
           transition={{ duration: 0.4, delay: 0.1 }}
           style={{ marginBottom: '0.4rem' }}
         >
-          <span style={{
-            display: 'inline-block',
-            fontSize: '0.65rem',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            color: accentColor,
-            background: `${accentColor}15`,
-            border: `1px solid ${accentColor}30`,
-            borderRadius: '9999px',
-            padding: '2px 8px',
-          }}>
+          <span
+            style={{
+              display: 'inline-block',
+              fontSize: '0.65rem',
+              fontWeight: 600,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: accentColor,
+              background: `${accentColor}15`,
+              border: `1px solid ${accentColor}30`,
+              borderRadius: '9999px',
+              padding: '2px 8px',
+            }}
+          >
             {isEducation ? '🎓 Education' : '💼 Work'}
           </span>
         </motion.div>
@@ -171,53 +173,65 @@ function TimelineCard({ item, index }) {
           }}
         >
           {/* Period */}
-          <div style={{
-            fontSize: '0.75rem',
-            color: 'rgba(255,255,255,0.4)',
-            fontFamily: 'var(--font-mono)',
-            marginBottom: '0.3rem',
-          }}>
+          <div
+            style={{
+              fontSize: '0.75rem',
+              color: 'rgba(255,255,255,0.4)',
+              fontFamily: 'var(--font-mono)',
+              marginBottom: '0.3rem',
+            }}
+          >
             {item.period}
           </div>
 
           {/* Title + Subtitle on same line */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'baseline',
-            gap: '0.5rem',
-            flexWrap: 'wrap',
-            marginBottom: '0.3rem',
-          }}>
-            <span style={{
-              fontSize: '1rem',
-              fontWeight: 600,
-              color: '#fff',
-            }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'baseline',
+              gap: '0.5rem',
+              flexWrap: 'wrap',
+              marginBottom: '0.3rem',
+            }}
+          >
+            <span
+              style={{
+                fontSize: '1rem',
+                fontWeight: 600,
+                color: '#fff',
+              }}
+            >
               {item.title}
             </span>
-            <span style={{
-              fontSize: '0.8rem',
-              color: accentColor,
-              opacity: 0.85,
-            }}>
+            <span
+              style={{
+                fontSize: '0.8rem',
+                color: accentColor,
+                opacity: 0.85,
+              }}
+            >
               {item.subtitle}
             </span>
           </div>
 
           {/* Organization + Location on same line */}
           <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap' }}>
-            <span style={{
-              fontSize: '0.875rem',
-              color: 'rgba(255,255,255,0.65)',
-              fontWeight: 500,
-            }}>
+            <span
+              style={{
+                fontSize: '0.875rem',
+                color: 'rgba(255,255,255,0.65)',
+                fontWeight: 500,
+              }}
+            >
               {item.organization}
             </span>
             {item.location && (
-              <span style={{
-                fontSize: '0.75rem',
-                color: 'rgba(255,255,255,0.35)',
-              }}>
+              <span
+                style={{
+                  fontSize: '0.75rem',
+                  color: 'rgba(255,255,255,0.35)',
+                }}
+              >
                 , {item.location}
               </span>
             )}
@@ -235,7 +249,6 @@ export default function Timeline() {
   return (
     <section id="timeline" className="section-padding">
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -244,7 +257,16 @@ export default function Timeline() {
           style={{ marginBottom: '3.5rem' }}
           ref={ref}
         >
-          <p style={{ color: '#a855f7', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+          <p
+            style={{
+              color: '#a855f7',
+              fontSize: '0.85rem',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              marginBottom: '0.5rem',
+            }}
+          >
             My Journey
           </p>
           <h2 className="section-title">Experience & Education</h2>
@@ -255,7 +277,6 @@ export default function Timeline() {
 
         {/* Timeline */}
         <div style={{ position: 'relative' }}>
-
           {/* Vertical center line */}
           <motion.div
             initial={{ scaleY: 0 }}
@@ -275,34 +296,38 @@ export default function Timeline() {
           />
 
           {/* "now" label at top */}
-          <div style={{
-            position: 'absolute',
-            left: '50%',
-            top: '-1.5rem',
-            transform: 'translateX(-50%)',
-            fontSize: '0.65rem',
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: '#a855f7',
-            opacity: 0.7,
-          }}>
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '-1.5rem',
+              transform: 'translateX(-50%)',
+              fontSize: '0.65rem',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: '#a855f7',
+              opacity: 0.7,
+            }}
+          >
             now
           </div>
 
           {/* "start" label at bottom */}
-          <div style={{
-            position: 'absolute',
-            left: '50%',
-            bottom: '-1.5rem',
-            transform: 'translateX(-50%)',
-            fontSize: '0.65rem',
-            fontWeight: 600,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: '#a855f7',
-            opacity: 0.7,
-          }}>
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              bottom: '-1.5rem',
+              transform: 'translateX(-50%)',
+              fontSize: '0.65rem',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: '#a855f7',
+              opacity: 0.7,
+            }}
+          >
             start
           </div>
 

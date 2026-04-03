@@ -20,6 +20,10 @@ preview:
 deploy:
 	npm run deploy
 
+## Format source files with Prettier
+format:
+	npm run format
+
 ## Remove build output
 clean:
 	rm -rf dist
@@ -36,6 +40,7 @@ help:
 	@echo "  make build     - Build for production"
 	@echo "  make preview   - Preview production build locally"
 	@echo "  make deploy    - Build and deploy to GitHub Pages"
+	@echo "  make format    - Format source files with Prettier"
 	@echo "  make clean     - Remove dist folder"
 	@echo "  make ship      - Install, build and deploy in one step"
 	@echo ""

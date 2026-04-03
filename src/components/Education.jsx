@@ -52,42 +52,52 @@ function EducationCard({ item }) {
       }}
     >
       {/* Icon */}
-      <div style={{
-        width: '48px',
-        height: '48px',
-        borderRadius: '12px',
-        background: 'rgba(34,211,238,0.1)',
-        border: '1px solid rgba(34,211,238,0.25)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexShrink: 0,
-        fontSize: '1.4rem',
-      }}>
+      <div
+        style={{
+          width: '48px',
+          height: '48px',
+          borderRadius: '12px',
+          background: 'rgba(34,211,238,0.1)',
+          border: '1px solid rgba(34,211,238,0.25)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+          fontSize: '1.4rem',
+        }}
+      >
         🎓
       </div>
 
       {/* Content */}
       <div style={{ flex: 1 }}>
-        <div style={{
-          fontSize: '0.75rem',
-          color: 'rgba(255,255,255,0.4)',
-          fontFamily: 'var(--font-mono)',
-          marginBottom: '0.3rem',
-        }}>
+        <div
+          style={{
+            fontSize: '0.75rem',
+            color: 'rgba(255,255,255,0.4)',
+            fontFamily: 'var(--font-mono)',
+            marginBottom: '0.3rem',
+          }}
+        >
           {item.period}
         </div>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.3rem' }}>
-          <span style={{ fontSize: '1rem', fontWeight: 600, color: '#fff' }}>
-            {item.degree}
-          </span>
-          <span style={{ fontSize: '0.8rem', color: '#22d3ee', opacity: 0.85 }}>
-            {item.field}
-          </span>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'baseline',
+            gap: '0.5rem',
+            flexWrap: 'wrap',
+            marginBottom: '0.3rem',
+          }}
+        >
+          <span style={{ fontSize: '1rem', fontWeight: 600, color: '#fff' }}>{item.degree}</span>
+          <span style={{ fontSize: '0.8rem', color: '#22d3ee', opacity: 0.85 }}>{item.field}</span>
         </div>
         <div style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.65)', fontWeight: 500 }}>
           {item.institution}
-          <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)', marginLeft: '0.4rem' }}>
+          <span
+            style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)', marginLeft: '0.4rem' }}
+          >
             {item.location}
           </span>
         </div>
@@ -97,7 +107,14 @@ function EducationCard({ item }) {
           </div>
         )}
         {item.thesis && (
-          <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)', marginTop: '0.4rem', fontStyle: 'italic' }}>
+          <div
+            style={{
+              fontSize: '0.75rem',
+              color: 'rgba(255,255,255,0.35)',
+              marginTop: '0.4rem',
+              fontStyle: 'italic',
+            }}
+          >
             Thesis: {item.thesis}
             {item.thesisUrl && (
               <a
@@ -115,8 +132,8 @@ function EducationCard({ item }) {
                   opacity: 0.85,
                   whiteSpace: 'nowrap',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-                onMouseLeave={(e) => e.currentTarget.style.opacity = '0.85'}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.85')}
               >
                 Read →
               </a>
@@ -135,7 +152,6 @@ export default function Education() {
   return (
     <section id="education" className="section-padding">
       <div style={{ maxWidth: '860px', margin: '0 auto' }} ref={ref}>
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -143,7 +159,16 @@ export default function Education() {
           transition={{ duration: 0.6 }}
           style={{ marginBottom: '2.5rem' }}
         >
-          <p style={{ color: '#22d3ee', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+          <p
+            style={{
+              color: '#22d3ee',
+              fontSize: '0.85rem',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              marginBottom: '0.5rem',
+            }}
+          >
             Academic Background
           </p>
           <h2 className="section-title">Education</h2>

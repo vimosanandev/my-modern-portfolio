@@ -29,7 +29,9 @@ export default function Navbar() {
       const el = document.getElementById(id)
       if (!el) return null
       const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id)
+        },
         { threshold: 0.4 }
       )
       obs.observe(el)
@@ -97,21 +99,25 @@ export default function Navbar() {
       >
         {/* Logo */}
         <a href="#hero" style={{ textDecoration: 'none' }}>
-          <span style={{
-            fontFamily: 'var(--font-mono)',
-            fontWeight: 700,
-            fontSize: '1.1rem',
-            background: 'linear-gradient(to right, #a855f7, #22d3ee)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}>
+          <span
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 700,
+              fontSize: '1.1rem',
+              background: 'linear-gradient(to right, #a855f7, #22d3ee)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
             &lt;{personalInfo.name.split(' ')[0]} /&gt;
           </span>
         </a>
 
         {/* Desktop links */}
-        <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}
-            className="hidden-mobile">
+        <ul
+          style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}
+          className="hidden-mobile"
+        >
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -120,9 +126,8 @@ export default function Navbar() {
                   textDecoration: 'none',
                   fontSize: '0.9rem',
                   fontWeight: 500,
-                  color: activeSection === link.href.slice(1)
-                    ? '#a855f7'
-                    : 'rgba(255,255,255,0.65)',
+                  color:
+                    activeSection === link.href.slice(1) ? '#a855f7' : 'rgba(255,255,255,0.65)',
                   transition: 'color 0.2s',
                   position: 'relative',
                 }}
@@ -165,9 +170,14 @@ export default function Navbar() {
           {[0, 1, 2].map((i) => (
             <motion.span
               key={i}
-              animate={menuOpen
-                ? i === 1 ? { opacity: 0 } : i === 0 ? { rotate: 45, y: 7 } : { rotate: -45, y: -7 }
-                : { rotate: 0, y: 0, opacity: 1 }
+              animate={
+                menuOpen
+                  ? i === 1
+                    ? { opacity: 0 }
+                    : i === 0
+                      ? { rotate: 45, y: 7 }
+                      : { rotate: -45, y: -7 }
+                  : { rotate: 0, y: 0, opacity: 1 }
               }
               style={{
                 display: 'block',
