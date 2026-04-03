@@ -6,6 +6,7 @@ import Skills from './components/Skills'
 import Timeline from './components/Timeline'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import MenuOverlay from './components/MenuOverlay'
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         </main>
         <Footer />
       </div>
+      <MenuOverlay />
     </div>
   )
 }
