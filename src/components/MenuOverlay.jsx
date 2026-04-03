@@ -57,41 +57,50 @@ export default function MenuOverlay() {
           alignItems: 'center',
         }}
       >
-        {/* Back to top */}
-        <motion.button
-          onClick={scrollToTop}
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.93 }}
-          style={{
-            width: '52px',
-            height: '52px',
-            borderRadius: '50%',
-            border: '1px solid rgba(34,211,238,0.4)',
-            background: 'rgba(10,10,15,0.85)',
-            backdropFilter: 'blur(16px)',
-            boxShadow: '0 0 20px rgba(34,211,238,0.2)',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 0,
-          }}
-          aria-label="Back to top"
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#22d3ee"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M17 11l-5-5-5 5" />
-            <path d="M17 18l-5-5-5 5" />
-          </svg>
-        </motion.button>
+        {/* Back to top — hidden when overlay is open */}
+        <AnimatePresence>
+          {!open && (
+            <motion.button
+              key="back-to-top"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.2 }}
+              onClick={scrollToTop}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.93 }}
+              style={{
+                width: '52px',
+                height: '52px',
+                borderRadius: '50%',
+                border: '1px solid rgba(34,211,238,0.4)',
+                background: 'rgba(10,10,15,0.85)',
+                backdropFilter: 'blur(16px)',
+                boxShadow: '0 0 20px rgba(34,211,238,0.2)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: 0,
+              }}
+              aria-label="Back to top"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22d3ee"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M17 11l-5-5-5 5" />
+                <path d="M17 18l-5-5-5 5" />
+              </svg>
+            </motion.button>
+          )}
+        </AnimatePresence>
 
         {/* Menu button */}
         <motion.button

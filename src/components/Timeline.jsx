@@ -183,9 +183,7 @@ function TimelineCard({ item, index }) {
 
           <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap' }}>
             <span className="tl-org">{item.organization}</span>
-            {item.location && (
-              <span className="tl-location">, {item.location}</span>
-            )}
+            {item.location && <span className="tl-location">, {item.location}</span>}
           </div>
         </motion.div>
       </div>
