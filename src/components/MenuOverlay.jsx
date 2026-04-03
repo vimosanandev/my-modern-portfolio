@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -41,6 +41,20 @@ const cardVariants = {
 
 export default function MenuOverlay() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 100)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
 
   return (
     <>
@@ -57,9 +71,9 @@ export default function MenuOverlay() {
           alignItems: 'center',
         }}
       >
-        {/* Back to top — hidden when overlay is open */}
+        {/* Back to top — hidden when overlay is open or already at top */}
         <AnimatePresence>
-          {!open && (
+          {!open && scrolled && (
             <motion.button
               key="back-to-top"
               initial={{ opacity: 0, scale: 0.8 }}
