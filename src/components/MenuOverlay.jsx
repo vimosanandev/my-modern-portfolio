@@ -179,15 +179,16 @@ export default function MenuOverlay() {
               alignItems: 'center',
               justifyContent: 'center',
               padding: '2rem',
+              overflowY: 'auto',
             }}
           >
-            <div onClick={(e) => e.stopPropagation()}>
+            <div className="menu-inner" onClick={(e) => e.stopPropagation()}>
               {/* Header */}
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35 }}
-                style={{ textAlign: 'center', marginBottom: '2.5rem' }}
+                style={{ textAlign: 'center', marginBottom: '2rem' }}
               >
                 <p
                   style={{
@@ -201,28 +202,11 @@ export default function MenuOverlay() {
                 >
                   More from me
                 </p>
-                <h2
-                  style={{
-                    fontSize: '1.75rem',
-                    fontWeight: 700,
-                    color: '#fff',
-                    margin: 0,
-                  }}
-                >
-                  Personal Space
-                </h2>
+                <h2 className="menu-title">Personal Space</h2>
               </motion.div>
 
               {/* Cards grid */}
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                  gap: '1rem',
-                  maxWidth: '720px',
-                  width: '100%',
-                }}
-              >
+              <div className="menu-grid">
                 {pages.map((page, i) => (
                   <motion.div
                     key={page.title}
@@ -231,11 +215,11 @@ export default function MenuOverlay() {
                     initial="hidden"
                     animate="visible"
                     whileHover={{ scale: 1.04, y: -4 }}
+                    className="menu-card"
                     style={{
                       background: 'rgba(255,255,255,0.04)',
                       border: `1px solid ${page.color}20`,
                       borderRadius: '1rem',
-                      padding: '1.5rem',
                       cursor: 'default',
                       position: 'relative',
                       overflow: 'hidden',
@@ -254,8 +238,8 @@ export default function MenuOverlay() {
                     <span
                       style={{
                         position: 'absolute',
-                        top: '0.75rem',
-                        right: '0.75rem',
+                        top: '0.5rem',
+                        right: '0.5rem',
                         fontSize: '0.6rem',
                         fontWeight: 600,
                         letterSpacing: '0.08em',
@@ -270,34 +254,9 @@ export default function MenuOverlay() {
                       Soon
                     </span>
 
-                    <div
-                      style={{
-                        fontSize: '2rem',
-                        marginBottom: '0.75rem',
-                        lineHeight: 1,
-                      }}
-                    >
-                      {page.icon}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: '1rem',
-                        fontWeight: 600,
-                        color: '#fff',
-                        marginBottom: '0.4rem',
-                      }}
-                    >
-                      {page.title}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: '0.78rem',
-                        color: 'rgba(255,255,255,0.4)',
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {page.description}
-                    </div>
+                    <div className="menu-card-icon">{page.icon}</div>
+                    <div className="menu-card-title">{page.title}</div>
+                    <div className="menu-card-desc">{page.description}</div>
                   </motion.div>
                 ))}
               </div>
@@ -305,6 +264,30 @@ export default function MenuOverlay() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <style>{`
+        .menu-inner { width: 100%; max-width: 720px; }
+        .menu-title { font-size: 1.75rem; font-weight: 700; color: #fff; margin: 0; }
+        .menu-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1rem;
+          width: 100%;
+        }
+        .menu-card { padding: 1.5rem; }
+        .menu-card-icon { font-size: 2rem; margin-bottom: 0.75rem; line-height: 1; }
+        .menu-card-title { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem; }
+        .menu-card-desc { font-size: 0.78rem; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+        @media (max-width: 767px) {
+          .menu-title { font-size: 1.2rem; }
+          .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+          .menu-card { padding: 0.85rem; }
+          .menu-card-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+          .menu-card-title { font-size: 0.85rem; }
+          .menu-card-desc { font-size: 0.7rem; }
+        }
+      `}</style>
     </>
   )
 }
