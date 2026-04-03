@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { projects } from '../data/portfolio'
-import { fadeInUp, fadeInLeft, staggerContainer, sectionViewport } from '../utils/animations'
+import { fadeInLeft, staggerContainer, sectionViewport } from '../utils/animations'
 
 function ProjectCard({ project }) {
   return (
@@ -46,7 +46,7 @@ function ProjectCard({ project }) {
         overflow: 'hidden',
       }}>
         {project.image
-          ? <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          ? <img src={project.image} alt={project.title} width="800" height="480" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           : (
             <>
               <div style={{

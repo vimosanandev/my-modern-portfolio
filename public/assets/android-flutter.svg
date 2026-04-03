@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a7a6e"/>
+      <stop offset="100%" style="stop-color:#2d9e4a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="480" fill="url(#bg)"/>
+
+  <!-- ═══════ FLUTTER LOGO ═══════
+       Two trapezoid strips forming a right-pointing chevron.
+       Right edge is vertical. Left edge is diagonal (45°).
+       Top strip: wider at top, narrows toward bottom-left.
+       Bottom strip: narrows at top, wider at bottom-left.
+  -->
+
+  <!-- Top strip (light blue) -->
+  <polygon points="127,155 292,155 292,230 207,230" fill="#54C5F8"/>
+
+  <!-- Bottom strip — light blue (upper-right right-angle triangle) -->
+  <polygon points="207,243 292,243 292,317" fill="#54C5F8"/>
+
+  <!-- Bottom strip — dark blue (lower-left triangle) -->
+  <polygon points="207,243 292,317 127,317" fill="#0277BD"/>
+
+  <!-- flutter label -->
+  <text x="210" y="370" text-anchor="middle" font-family="Arial" font-weight="bold"
+    font-size="18" fill="white" letter-spacing="4" opacity="0.9">flutter</text>
+
+  <!-- ═══════ DIVIDER ═══════ -->
+  <line x1="400" y1="120" x2="400" y2="370" stroke="white" stroke-width="1" opacity="0.18"/>
+
+  <!-- ═══════ ANDROID ROBOT ═══════ -->
+  <g fill="#3ddc84">
+    <!-- Left antenna -->
+    <line x1="518" y1="195" x2="493" y2="153" stroke="#3ddc84" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="489" cy="147" r="9"/>
+    <!-- Right antenna -->
+    <line x1="602" y1="195" x2="627" y2="153" stroke="#3ddc84" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="631" cy="147" r="9"/>
+    <!-- Head (semicircle) -->
+    <path d="M 505 202 A 55 55 0 0 1 615 202 Z"/>
+    <!-- Eyes (white) -->
+    <circle cx="532" cy="185" r="9" fill="white"/>
+    <circle cx="588" cy="185" r="9" fill="white"/>
+    <!-- Body -->
+    <rect x="500" y="206" width="120" height="128" rx="15"/>
+    <!-- Left arm -->
+    <rect x="463" y="208" width="33" height="100" rx="16"/>
+    <!-- Right arm -->
+    <rect x="624" y="208" width="33" height="100" rx="16"/>
+    <!-- Left leg -->
+    <rect x="521" y="330" width="33" height="72" rx="16"/>
+    <!-- Right leg -->
+    <rect x="566" y="330" width="33" height="72" rx="16"/>
+  </g>
+
+  <!-- android label -->
+  <text x="560" y="424" text-anchor="middle" font-family="Arial" font-weight="bold"
+    font-size="18" fill="white" letter-spacing="4" opacity="0.9">android</text>
+</svg>

@@ -264,9 +264,12 @@ export default function Hero() {
 
             {/* Floating badges */}
             {[
-              { label: 'React', color: '#61dafb', top: '-10px', right: '-20px' },
-              { label: 'TypeScript', color: '#3178c6', bottom: '20px', left: '-30px' },
-              { label: 'Node.js', color: '#68a063', bottom: '-10px', right: '10px' },
+              { label: 'Android', color: '#3ddc84', top: '-10px', right: '-20px' },
+              { label: 'Kotlin', color: '#7f52ff', top: '30px', left: '-40px' },
+              { label: 'Java', color: '#f89820', bottom: '20px', left: '-30px' },
+              { label: 'Flutter', color: '#54c5f8', bottom: '-10px', right: '10px' },
+              { label: 'Python', color: '#ffd43b', top: '120px', right: '-40px' },
+              { label: 'Dart', color: '#00b4ab', bottom: '80px', left: '-40px' },
             ].map((badge, i) => (
               <motion.div
                 key={badge.label}
