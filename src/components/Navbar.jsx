@@ -4,6 +4,7 @@ import { personalInfo } from '../data/portfolio'
 
 const navLinks = [
   { label: 'Home', href: '#hero' },
+  { label: 'Timeline', href: '#timeline' },
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },
@@ -22,7 +23,7 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    const sections = ['hero', 'projects', 'skills', 'contact']
+    const sections = ['hero', 'timeline', 'projects', 'skills', 'contact']
     const observers = sections.map((id) => {
       const el = document.getElementById(id)
       if (!el) return null
