@@ -4,5 +4,5 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/portfolio/', // must match your GitHub repo name exactly
+  base: '/my-modern-portfolio/',
 })

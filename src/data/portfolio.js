@@ -11,7 +11,8 @@ export const personalInfo = {
   email: 'vimosanan.dev@gmail.com',
   github: 'https://github.com/vimosanandev',
   linkedin: 'https://www.linkedin.com/in/vimoahil/',
-  twitter: 'https://x.com/vimosanan',
+  phone: 'tel:+18069995417',
+  phoneDisplay: '(806) 999-5417',
   resumeUrl: `${base}/assets/v11.0-android(F).pdf`,
   avatar: `${base}/assets/avatar.png`,
 }
