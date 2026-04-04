@@ -7,27 +7,35 @@ const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 const pages = [
   {
     title: 'Learnings',
+    route: '/learnings',
     description: 'Notes, articles, and things I picked up along the way.',
     icon: '📚',
     color: '#a855f7',
+    isDeveloped: false,
   },
   {
     title: 'Travels',
+    route: '/travels',
     description: "Places I've been, experiences I've collected.",
     icon: '✈️',
     color: '#22d3ee',
+    isDeveloped: true,
   },
   {
     title: 'Hobbies',
+    route: '/hobbies',
     description: "What I do when I'm not writing code.",
     icon: '🎸',
     color: '#f59e0b',
+    isDeveloped: false,
   },
   {
     title: 'Photos',
+    route: '/photos',
     description: 'Moments captured through the lens.',
     icon: '📷',
     color: '#ec4899',
+    isDeveloped: true,
   },
 ]
 
@@ -241,7 +249,13 @@ export default function MenuOverlay() {
                     animate="visible"
                     whileHover={{ scale: 1.04, y: -4 }}
                     className="menu-card"
-                    onClick={() => page.title === 'Photos' && (setOpen(false), navigate('/photos'))}
+                    onClick={() => {
+                      if (!page.isDeveloped) {
+                        return
+                      }
+                      setOpen(false)
+                      navigate(page.route)
+                    }}
                     style={{
                       background: 'rgba(255,255,255,0.04)',
                       border: `1px solid ${page.color}20`,
@@ -261,7 +275,7 @@ export default function MenuOverlay() {
                     }}
                   >
                     {/* Coming soon badge — hidden for implemented pages */}
-                    {page.title !== 'Photos' && (
+                    {page.title !== 'Travels' && page.title !== 'Photos' && (
                       <span
                         style={{
                           position: 'absolute',
