@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
@@ -42,6 +43,7 @@ const cardVariants = {
 export default function MenuOverlay() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 100)
@@ -239,11 +241,12 @@ export default function MenuOverlay() {
                     animate="visible"
                     whileHover={{ scale: 1.04, y: -4 }}
                     className="menu-card"
+                    onClick={() => page.title === 'Photos' && (setOpen(false), navigate('/photos'))}
                     style={{
                       background: 'rgba(255,255,255,0.04)',
                       border: `1px solid ${page.color}20`,
                       borderRadius: '1rem',
-                      cursor: 'default',
+                      cursor: page.title === 'Photos' ? 'pointer' : 'default',
                       position: 'relative',
                       overflow: 'hidden',
                       transition: 'border-color 0.2s, box-shadow 0.2s',
@@ -257,25 +260,27 @@ export default function MenuOverlay() {
                       e.currentTarget.style.boxShadow = 'none'
                     }}
                   >
-                    {/* Coming soon badge */}
-                    <span
-                      style={{
-                        position: 'absolute',
-                        top: '0.5rem',
-                        right: '0.5rem',
-                        fontSize: '0.6rem',
-                        fontWeight: 600,
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        color: 'rgba(255,255,255,0.35)',
-                        background: 'rgba(255,255,255,0.06)',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        borderRadius: '9999px',
-                        padding: '2px 7px',
-                      }}
-                    >
-                      Soon
-                    </span>
+                    {/* Coming soon badge — hidden for implemented pages */}
+                    {page.title !== 'Photos' && (
+                      <span
+                        style={{
+                          position: 'absolute',
+                          top: '0.5rem',
+                          right: '0.5rem',
+                          fontSize: '0.6rem',
+                          fontWeight: 600,
+                          letterSpacing: '0.08em',
+                          textTransform: 'uppercase',
+                          color: 'rgba(255,255,255,0.35)',
+                          background: 'rgba(255,255,255,0.06)',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          borderRadius: '9999px',
+                          padding: '2px 7px',
+                        }}
+                      >
+                        Soon
+                      </span>
+                    )}
 
                     <div className="menu-card-icon">{page.icon}</div>
                     <div className="menu-card-title">{page.title}</div>
