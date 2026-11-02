@@ -220,18 +220,6 @@ export default function ProjectsPage() {
         </AnimatePresence>
       </section>
 
-      <section>
-        <h2 className="section-h" style={{ marginBottom: 12 }}>All projects</h2>
-        <div className="thumbs">
-          {list.map((x, i) => (
-            <button key={x.id} className={`thumb${x.id === p.id ? ' on' : ''}`} onClick={() => go(i)}>
-              <div className="thumb-box"><PhoneMock platform={x.platform} device={x.device} screen={x.screen} image={x.image} photo={x.photo} className="thumb-phone" /></div>
-              <b>{x.title}</b>
-              <small>{companyById[x.company].short} · {x.year}</small>
-            </button>
-          ))}
-        </div>
-      </section>
     </>
   )
 }
