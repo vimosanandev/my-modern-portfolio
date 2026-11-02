@@ -1,13 +1,14 @@
 const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+import { projects as projectList } from './projects'
 
 export const personalInfo = {
-  name: 'Vimosanan',
-  title: 'Mobile Developer',
-  taglines: [
-    'Crafting native Android experiences with Kotlin, Jetpack Compose, and modern architecture.',
-    'Bridging platforms with Flutter for seamless cross-platform development.',
-    'Extending reach to the backend with FastAPI, Python, and Node.js.',
-  ],
+  name: 'Vimosanan Ahiladas',
+  firstName: 'Vimosanan',
+  handle: 'vimosanandev',
+  title: 'Senior Android Developer',
+  tagline: 'Kotlin · Jetpack Compose · Flutter',
+  location: 'Sachse, TX',
+  visa: 'H1B · open to C2C',
   email: 'vimosanan.dev@gmail.com',
   github: 'https://github.com/vimosanandev',
   linkedin: 'https://www.linkedin.com/in/vimoahil/',
@@ -15,219 +16,97 @@ export const personalInfo = {
   phoneDisplay: '(806) 999-5417',
   resumeUrl: `${base}/assets/v11.0-android(F).pdf`,
   avatar: `${base}/assets/avatar.png`,
+  years: 8.5,
+  yearsLabel: '8+',
+  // Apps = the projects listed on the site, so the count never drifts from the list.
+  stats: { years: '8+', companies: 5, apps: projectList.length },
 }
 
-export const projects = [
+export const highlights = [
+  { id: 'android', short: 'Kt', label: 'Android', to: '/technical#android' },
+  { id: 'flutter', short: 'Fl', label: 'Flutter', to: '/technical#flutter' },
+  { id: 'ios', short: 'iOS', label: 'iOS', to: '/technical#ios' },
+  { id: 'fastapi', short: 'Py', label: 'FastAPI', to: '/technical#backend' },
+]
+
+export const sections = [
+  { id: 'home', label: 'Home', to: '/', icon: 'home' },
+  { id: 'projects', label: 'Projects', to: '/projects', icon: 'grid' },
+  { id: 'education', label: 'Education', to: '/education', icon: 'cap' },
+  { id: 'technical', label: 'Technical', to: '/technical', icon: 'code' },
+  { id: 'companies', label: 'Companies', to: '/companies', icon: 'briefcase' },
+  { id: 'personal', label: 'Personal', to: '/personal', icon: 'globe' },
+]
+
+// Stories row. `current` marks the ring as live.
+export const companies = [
   {
-    id: 1,
-    title: 'CVS Health - Photo Retails',
-    description:
-      'Led Android-side integration of the IMG.LY image editing engine at CVS Health, building native features within a Flutter hybrid app. Architected with Clean Architecture and MVVM, implemented Hilt DI, Retrofit REST integrations, and maintained quality through JUnit, Espresso, and automated CI/CD pipelines via GitHub Actions and CircleCI.',
-    tags: [
-      'Android',
-      'Kotlin',
-      'Flutter',
-      'Clean Architecture',
-      'MVVM',
-      'Hilt',
-      'Retrofit',
-      'CI/CD',
-    ],
-    image: `${base}/assets/android-flutter.svg`,
-    githubUrl: null,
-    liveUrl: 'https://play.google.com/store/apps/details?id=com.cvs.launchers.cvs&hl=en_US',
-    featured: false,
+    id: 'mammilway',
+    short: 'MW',
+    name: 'Mammilway Inc',
+    role: 'Senior Mobile Developer, Android',
+    location: 'San Jose, California',
+    period: 'May 2026 - Present',
+    current: true,
+    website: 'https://www.mammilway.com/',
+    linkedin: 'https://www.linkedin.com/company/mammilway',
   },
   {
-    id: 2,
-    title: 'POS Order Application',
-    description:
-      'Designed and developed native Android apps for restaurant waiter management and POS systems. Built intuitive UIs with Jetpack Compose following Material 3 principles, implemented WebSocket for real-time order and table updates, and integrated Firebase push notifications. Followed MVVM architecture with Hilt DI, Kotlin Coroutines, and Flow for reactive programming, with CI/CD via GitHub Actions and Jenkins.',
-    tags: [
-      'Android',
-      'Kotlin',
-      'Jetpack Compose',
-      'Material 3',
-      'WebSocket',
-      'Firebase',
-      'MVVM',
-      'Hilt',
-      'Kotlin Flow',
-      'CI/CD',
-    ],
-    image: `${base}/assets/android-logo.png`,
-    githubUrl: null,
-    liveUrl: null,
-    featured: false,
+    id: 'cvs-health',
+    short: 'CVS',
+    name: 'CVS Health',
+    role: 'Senior Mobile Developer, Android & Flutter',
+    location: 'Richardson, TX (Remote)',
+    period: 'May 2025 - May 2026',
+    website: 'https://www.cvs.com/',
+    linkedin: 'https://www.linkedin.com/company/cvshealth/',
   },
   {
-    id: 3,
-    title: 'POS Printer Application',
-    description:
-      'Built a native Android app for receipt and bill printing in restaurant POS environments. Integrated Bluetooth printer discovery and connection, designed receipt preview screens with Jetpack Compose following Material 3 principles, and managed print queues with real-time status updates. Followed MVVM architecture with Hilt DI, Kotlin Coroutines, and Flow, with CI/CD via GitHub Actions and Jenkins.',
-    tags: [
-      'Android',
-      'Kotlin',
-      'Jetpack Compose',
-      'Material 3',
-      'Bluetooth',
-      'Firebase',
-      'MVVM',
-      'Hilt',
-      'Kotlin Flow',
-      'CI/CD',
-    ],
-    image: `${base}/assets/android-logo.png`,
-    githubUrl: null,
-    liveUrl: null,
-    featured: false,
+    id: 'vendor-build',
+    short: 'VB',
+    name: 'Vendor Build',
+    role: 'Senior Mobile Developer, Android',
+    location: 'San Jose, CA (Remote)',
+    period: 'Aug 2024 - Apr 2025',
+    website: 'https://www.vendor-build.com/',
+    linkedin: 'https://www.linkedin.com/company/vendor-bulid',
   },
   {
-    id: 4,
-    title: 'KooBits - Parent App',
-    description:
-      "Designed and developed native Android features for a kids' e-learning platform, building scalable experiences for Kids, Parents, and Teachers. Applied Material Design principles for intuitive UI, collaborated with backend engineers on API integration, and provided actionable metrics via Google Play Console and App Store Connect. Contributed to migrating the existing Android app to Flutter while maintaining performance and functionality.",
-    tags: [
-      'Android',
-      'Kotlin',
-      'Flutter',
-      'Material Design',
-      'REST APIs',
-      'CI/CD',
-      'Google Play Console',
-    ],
-    image: `${base}/assets/android-flutter.svg`,
-    githubUrl: null,
-    liveUrl: 'https://play.google.com/store/apps/details?id=com.koobits.koobits&hl=en_US',
-    featured: false,
+    id: 'koobits',
+    short: 'KB',
+    name: 'KooBits',
+    role: 'Senior Mobile Developer, Android & Flutter',
+    location: 'Singapore',
+    period: 'Aug 2020 - Jul 2023',
+    website: 'https://www.koobits.com/',
+    linkedin: 'https://www.linkedin.com/company/koobits-learning',
+    seen: true,
   },
   {
-    id: 5,
-    title: 'KooBits - Student App',
-    description:
-      "Built engaging native Android features for the student-facing side of KooBits' kids' e-learning platform. Designed gamified learning experiences with quizzes, XP rewards, streaks, badges, and leaderboards using Material Design principles. Collaborated with backend engineers on API integration and contributed to migrating the Android app to Flutter while maintaining performance and functionality.",
-    tags: ['Android', 'Kotlin', 'Material Design', 'REST APIs', 'CI/CD', 'Google Play Console'],
-    image: `${base}/assets/android-logo.png`,
-    githubUrl: null,
-    liveUrl: null,
-    featured: false,
-  },
-  {
-    id: 6,
-    title: 'WhizzKids',
-    description:
-      'Contributed to an educational platform for Kids and Parents, developing Android features using Kotlin and Java with Android SDKs. Built UIs with XML layouts, implemented Dagger2 for dependency injection, and collaborated with designers and backend teams to enhance user flow and design APIs for mobile integration. Ensured code quality with JUnit, Mockito, and Espresso.',
-    tags: ['Android', 'Kotlin', 'Java', 'XML', 'Dagger2', 'JUnit', 'Mockito', 'Espresso'],
-    image: `${base}/assets/android-logo.png`,
-    githubUrl: null,
-    liveUrl: null,
-    featured: false,
-  },
-  {
-    id: 7,
-    title: 'Kinrgize',
-    description:
-      'Contributed to a gym workout application for exercises and session recordings, building Android features using Kotlin and Java with Android SDKs. Developed XML-based UIs, implemented Dagger2 for dependency injection, and collaborated with designers and backend teams to refine user flow and API integration. Maintained code quality with JUnit, Mockito, and Espresso.',
-    tags: ['Android', 'Kotlin', 'Java', 'XML', 'Dagger2', 'JUnit', 'Mockito', 'Espresso'],
-    image: `${base}/assets/android-logo.png`,
-    githubUrl: null,
-    liveUrl: null,
-    featured: false,
-  },
-  {
-    id: 8,
-    title: 'Claims One',
-    description:
-      'Contributed to a tablet application for Sri Lankan insurance claim management, building Android features using Kotlin and Java with Android SDKs. Developed XML-based tablet-optimised UIs, implemented Dagger2 for dependency injection, and collaborated with designers and backend teams on API design and user flow. Maintained code quality with JUnit, Mockito, and Espresso.',
-    tags: ['Android', 'Kotlin', 'Java', 'XML', 'Dagger2', 'Tablet', 'JUnit', 'Mockito', 'Espresso'],
-    image: `${base}/assets/android-logo.png`,
-    githubUrl: null,
-    liveUrl: null,
-    featured: false,
+    id: 'ellipsis',
+    short: 'EL',
+    name: 'Ellipsis',
+    role: 'Mobile Developer, Android',
+    location: 'Colombo, Sri Lanka',
+    period: 'May 2018 - Nov 2019',
+    linkedin: 'https://www.linkedin.com/company/ellipsisconcepts/',
+    seen: true,
   },
 ]
 
-export const skills = [
-  // Android
-  { name: 'Kotlin', icon: '🟣', category: 'Android' },
-  { name: 'Java', icon: '☕', category: 'Android' },
-  { name: 'Jetpack Compose', icon: '🎨', category: 'Android' },
-  { name: 'XML Layouts', icon: '📐', category: 'Android' },
-  { name: 'Material Design', icon: '💎', category: 'Android' },
-  { name: 'MVVM', icon: '🏗️', category: 'Android' },
-  { name: 'Clean Architecture', icon: '🧱', category: 'Android' },
-  { name: 'Hilt / Dagger2', icon: '💉', category: 'Android' },
-  { name: 'Kotlin Coroutines', icon: '⚡', category: 'Android' },
-  { name: 'Kotlin Flow', icon: '🌊', category: 'Android' },
-  { name: 'Retrofit', icon: '🔗', category: 'Android' },
-  { name: 'Firebase', icon: '🔥', category: 'Android' },
-  // Cross-Platform
-  { name: 'Flutter', icon: '💙', category: 'Cross-Platform' },
-  { name: 'Dart', icon: '🎯', category: 'Cross-Platform' },
-  // Backend
-  { name: 'FastAPI', icon: '🚀', category: 'Backend' },
-  { name: 'Python', icon: '🐍', category: 'Backend' },
-  { name: 'Node.js', icon: '🟢', category: 'Backend' },
-  { name: 'REST APIs', icon: '📡', category: 'Backend' },
-  { name: 'WebSocket', icon: '🔌', category: 'Backend' },
-  // Testing
-  { name: 'JUnit', icon: '✅', category: 'Testing' },
-  { name: 'Mockito', icon: '🎭', category: 'Testing' },
-  { name: 'Espresso', icon: '☕', category: 'Testing' },
-  { name: 'Robolectric', icon: '🤖', category: 'Testing' },
-  // DevOps
-  { name: 'GitHub Actions', icon: '⚙️', category: 'DevOps' },
-  { name: 'CircleCI', icon: '🔄', category: 'DevOps' },
-  { name: 'Jenkins', icon: '🏗️', category: 'DevOps' },
-  { name: 'Git', icon: '📦', category: 'DevOps' },
-  { name: 'Codemagic', icon: '🪄', category: 'DevOps' },
-  // AWS
-  { name: 'ECS', icon: '🐳', category: 'AWS' },
-  { name: 'EKS', icon: '☸️', category: 'AWS' },
-  { name: 'S3', icon: '🪣', category: 'AWS' },
-  { name: 'DynamoDB', icon: '🗄️', category: 'AWS' },
-  { name: 'SQS', icon: '📨', category: 'AWS' },
-  { name: 'SNS', icon: '🔔', category: 'AWS' },
-  { name: 'Lambda', icon: '⚡', category: 'AWS' },
-  { name: 'RDS', icon: '🗃️', category: 'AWS' },
-  { name: 'API Gateway', icon: '🚪', category: 'AWS' },
-  { name: 'CloudWatch', icon: '📊', category: 'AWS' },
-  { name: 'CloudFront', icon: '🌐', category: 'AWS' },
-  // IDEs
-  { name: 'Android Studio', icon: '🤖', category: 'IDEs' },
-  { name: 'IntelliJ', icon: '🧠', category: 'IDEs' },
-  { name: 'PyCharm', icon: '🐍', category: 'IDEs' },
-  { name: 'VS Code', icon: '💙', category: 'IDEs' },
-  { name: 'Windsurf', icon: '🏄', category: 'IDEs' },
-  { name: 'Cursor', icon: '🖱️', category: 'IDEs' },
-  { name: 'Figma', icon: '🎨', category: 'IDEs' },
-  { name: 'Postman', icon: '📮', category: 'IDEs' },
-  { name: 'Charles Proxy', icon: '🔍', category: 'IDEs' },
-  { name: 'Jira', icon: '📋', category: 'IDEs' },
-  { name: 'Confluence', icon: '📝', category: 'IDEs' },
-  // Testing
-  { name: 'Appium', icon: '📱', category: 'Testing' },
-  // Backend
-  { name: 'PostgreSQL', icon: '🐘', category: 'Backend' },
-  { name: 'MongoDB', icon: '🍃', category: 'Backend' },
-  { name: 'Redis', icon: '🔴', category: 'Backend' },
-  { name: 'Docker', icon: '🐳', category: 'Backend' },
-  // Android
-  { name: 'DataStore', icon: '💾', category: 'Android' },
-  { name: 'CameraX', icon: '📷', category: 'Android' },
-  { name: 'BLE', icon: '📶', category: 'Android' },
-  { name: 'FCM', icon: '🔔', category: 'Android' },
-  { name: 'Room Database', icon: '🗄️', category: 'Android' },
-  { name: 'WorkManager', icon: '⚙️', category: 'Android' },
+export const schools = [
+  { id: 'ttu', short: 'TTU', name: 'Texas Tech', degree: 'MS Computer Science', period: '2023 - 2024', seen: true },
+  { id: 'uom', short: 'UoM', name: 'Moratuwa', degree: 'BSc Eng (Hons) CSE', period: '2014 - 2017', seen: true },
 ]
 
-export const skillCategories = [
-  'All',
-  'Android',
-  'Cross-Platform',
-  'Backend',
-  'Testing',
-  'DevOps',
-  'AWS',
-  'IDEs',
+// Home tiles, one per section.
+export const tiles = [
+  { to: '/projects', tone: 'green', title: 'Projects', sub: `${projectList.length} apps, 5 companies`, chips: ['KDS', 'Fynkle', 'POS'] },
+  { to: '/technical', tone: 'amber', title: 'Technical', sub: 'Mobile · Backend · Tools', chips: ['Kotlin', 'Compose', 'Hilt'] },
+  { to: '/companies', tone: 'violet', title: 'Companies', sub: 'Colombo → Singapore → Texas', chips: ['MW', 'CVS', 'KB'] },
+  { to: '/personal', tone: 'blue', title: 'Personal', sub: '5 countries, 3 hobbies', chips: ['🇱🇰', '🇸🇬', '🇺🇸'] },
 ]
+
+export { projects, projectById } from './projects'
+
+export const companyById = Object.fromEntries(companies.map((c) => [c.id, c]))
