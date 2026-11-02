@@ -2,7 +2,8 @@
 
 /* Flat light system. Instagram-style shell: fixed left sidebar, scrolling main panel. */
 @theme {
-  --color-bg: #f3f4f8;
+  --color-bg: #dfe2f6;
+  --color-bg-outer: #cfd4ee;
   --color-panel: #ffffff;
   --color-fg: #111319;
   --color-muted: #6b7080;
@@ -255,6 +256,24 @@
   .phone-case { position: absolute; inset: -6px; border-radius: 36px; z-index: -1; }
   .phone-android .phone-case { border-radius: 28px; background: #3ddc84; }
   .phone-ios .phone-case { background: #c9c7ff; }
+  /* Android tablet, portrait. Uniform bezel, small centered camera, squarer corners. */
+  .phone-tablet { aspect-ratio: 3 / 4; border-radius: 18px; padding: 14px; }
+  .phone-tablet .phone-scr { inset: 14px; border-radius: 8px; font-size: 9px; }
+  .phone-tablet.phone-android::after { top: 6px; width: 5px; height: 5px; margin-left: -2.5px; }
+  .phone-tablet .phone-case { border-radius: 24px; }
+  .phone-tablet .scr-bar { padding: 8px 12px 4px; }
+  .phone-tablet .scr-kds { grid-template-columns: 1fr 1fr; padding: 6px 10px; }
+  .phone-tablet .scr-nav { font-size: 8px; }
+  /* Ready-made device render: no CSS bezel, the PNG carries frame and screen. */
+  .phone-photo { aspect-ratio: auto; background: none; padding: 0; box-shadow: none; border-radius: 0; }
+  .phone-photo img { width: 100%; height: auto; display: block; }
+  .phone-photo-tilted { filter: drop-shadow(18px 30px 30px rgba(0, 0, 0, 0.28)); }
+  /* 3D turn. Parent sets `perspective`. */
+  .phone-tilt {
+    transform: rotateY(-18deg) rotateX(4deg);
+    transform-style: preserve-3d;
+    box-shadow: 18px 30px 50px rgba(0, 0, 0, 0.28), inset 0 0 0 2px #2b2d36;
+  }
   .phone-label {
     position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%); white-space: nowrap;
     font-family: var(--font-mono); font-size: 11px; color: var(--color-muted);
@@ -294,13 +313,18 @@
     border-radius: 999px; padding: 6px 12px; font-weight: 600; font-size: 12.5px;
   }
   .filters button.on { background: var(--color-fg); color: var(--color-panel); border-color: var(--color-fg); }
-  .reader { display: grid; grid-template-columns: 300px 1fr; gap: 32px; padding: 28px; }
-  .shelf { position: relative; display: grid; place-items: center; align-content: start; padding: 24px 0 40px; }
-  .shelf::before {
-    content: ""; position: absolute; left: -28px; right: 0; top: 46%; bottom: 0;
-    background: var(--color-soft); border-radius: 0 12px 12px 0;
+  /* Reader sits on the lavender page; the white "paper" panel starts mid-phone and runs under
+     description, stack, release and company. */
+  .reader { display: grid; grid-template-columns: 300px 1fr; gap: 32px; padding: 28px; position: relative; isolation: isolate; background: transparent; border: 0; }
+  .reader::before {
+    content: ""; position: absolute; left: 36px; right: 36px; top: 270px; bottom: 0;
+    background: var(--color-panel); z-index: -1; box-shadow: var(--shadow-card);
   }
+  .shelf { position: relative; display: grid; place-items: center; align-content: start; padding: 24px 0 40px; perspective: 1100px; }
   .shelf-phone { width: 210px; position: relative; z-index: 1; }
+  .shelf-phone.phone-tablet { width: 250px; }
+  /* Landscape tablet render: wider, and dropped so it straddles the white paper like the phone does. */
+  .shelf-phone.phone-photo-tablet { width: 280px; margin-top: 150px; }
   .shelf .arrows { position: absolute; left: 0; top: 60px; display: grid; gap: 8px; z-index: 2; }
   .shelf .arrows button {
     width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--color-line);
@@ -319,8 +343,7 @@
   .reader .lead { font-style: italic; color: var(--color-muted); max-width: 58ch; }
   .reader .cta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .reader .cta .spacer { flex: 1; }
-  .reader hr { border: 0; border-top: 1px solid var(--color-line); margin: 4px 0; }
-  .reader .meta { display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; }
+  .reader .meta { display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; margin-top: 10px; }
   .reader .meta h4 { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
   .reader .desc { display: grid; gap: 10px; align-content: start; }
   .reader .desc p { color: var(--color-muted); font-size: 13.5px; max-width: 60ch; }
@@ -337,8 +360,11 @@
   }
   .thumb:hover { box-shadow: var(--shadow-card); }
   .thumb.on { border-color: var(--color-fg); box-shadow: 0 0 0 1px var(--color-fg); }
-  .thumb-box { width: 64px; height: 135px; margin-bottom: 6px; overflow: hidden; }
-  .thumb-phone { width: 200px; max-width: none; transform: scale(0.32); transform-origin: top left; box-shadow: inset 0 0 0 2px #2b2d36; }
+  .thumb-box { width: 84px; height: 135px; margin-bottom: 6px; overflow: hidden; display: grid; align-content: end; }
+  .thumb-phone { width: 200px; max-width: none; transform: scale(0.32); transform-origin: bottom left; margin-left: 10px; box-shadow: inset 0 0 0 2px #2b2d36; }
+  .thumb-phone.phone-tablet { width: 250px; margin-left: 2px; }
+  .thumb-phone.phone-photo { width: 64px; transform: none; margin-left: 10px; box-shadow: none; }
+  .thumb-phone.phone-photo-tablet { width: 84px; margin-left: 0; }
   .thumb b { font-size: 12px; line-height: 1.2; }
   .thumb small { color: var(--color-muted); font-size: 10px; }
 
@@ -348,13 +374,23 @@
   .page-head p { color: var(--color-muted); max-width: 60ch; }
 }
 
+/* Wide screens: the whole app becomes one centered frame with space around it, like picture 1. */
+@media (min-width: 1400px) {
+  body { background: var(--color-bg-outer); }
+  .shell {
+    max-width: 1360px; min-height: calc(100vh - 48px); margin: 24px auto;
+    background: var(--color-bg); border-radius: 28px; overflow: clip;
+    box-shadow: 0 20px 60px rgba(40, 44, 90, 0.12);
+  }
+  .sidebar { top: 24px; height: calc(100vh - 48px); }
+}
 @media (max-width: 1100px) {
   .hero { grid-template-columns: 1fr; }
   .hero-phones { padding: 48px 16px 60px; }
 }
 @media (max-width: 1000px) {
   .reader { grid-template-columns: 1fr; padding: 20px; gap: 20px; }
-  .shelf::before { left: 0; right: 0; border-radius: 12px; }
+  .reader::before { top: 240px; left: 0; right: 0; }
   .shelf .arrows { display: none; }
   .reader .meta { grid-template-columns: 1fr; }
 }

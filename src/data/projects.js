@@ -1,10 +1,17 @@
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+
 // One entry per app. Order = reader order (newest first).
+// `device`: 'tablet' draws a portrait Android tablet frame instead of a phone.
 // `screen` picks the CSS mock inside the phone; set `image` to a real screenshot path to replace it.
+// `photo` is a full device render (frame + screen, transparent) and overrides both; `photoTilt` is the
+// same render with the 3D turn baked in. Build both with scripts/compose_device.py from Figma exports.
 // `featured` shows on the home feed.
 
 export const projects = [
   {
     id: 'fynkle',
+    photo: `${base}/assets/projects/fynkle.webp`,
+    photoTilt: `${base}/assets/projects/fynkle-tilt.webp`,
     title: 'Fynkle',
     company: 'mammilway',
     year: '2026',
@@ -31,6 +38,9 @@ export const projects = [
   },
   {
     id: 'kds',
+    device: 'tablet',
+    photo: `${base}/assets/projects/kds.webp`,
+    photoTilt: `${base}/assets/projects/kds-tilt.webp`,
     title: 'Kitchen Display System',
     company: 'mammilway',
     year: '2026',
@@ -108,6 +118,7 @@ export const projects = [
   },
   {
     id: 'vb-pos',
+    device: 'tablet',
     title: 'POS Order App',
     company: 'vendor-build',
     year: '2025',
@@ -134,6 +145,7 @@ export const projects = [
   },
   {
     id: 'vb-printer',
+    device: 'tablet',
     title: 'POS Printer App',
     company: 'vendor-build',
     year: '2024',
@@ -245,6 +257,7 @@ export const projects = [
   },
   {
     id: 'claims-one',
+    device: 'tablet',
     title: 'Claims One',
     company: 'ellipsis',
     year: '2018',

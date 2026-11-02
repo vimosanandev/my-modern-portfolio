@@ -68,7 +68,7 @@ export default function ProjectsPage() {
           </div>
           <AnimatePresence mode="wait">
             <motion.div key={p.id} variants={fade} initial="hidden" animate="show" exit="exit">
-              <PhoneMock platform={p.platform} screen={p.screen} image={p.image} withCase className="shelf-phone" />
+              <PhoneMock platform={p.platform} device={p.device} screen={p.screen} image={p.image} photo={p.photo} photoTilt={p.photoTilt} withCase tilt className="shelf-phone" />
             </motion.div>
           </AnimatePresence>
           <span className="counter">{index + 1} / {list.length}</span>
@@ -94,8 +94,6 @@ export default function ProjectsPage() {
               <button className="icon-btn" onClick={() => go(index - 1)} aria-label="Previous"><Icon name="chevron" style={{ transform: 'rotate(180deg)' }} /></button>
               <button className="icon-btn" onClick={() => go(index + 1)} aria-label="Next"><Icon name="chevron" /></button>
             </div>
-
-            <hr />
 
             <div className="meta">
               <div className="desc">
@@ -128,7 +126,7 @@ export default function ProjectsPage() {
         <div className="thumbs">
           {list.map((x, i) => (
             <button key={x.id} className={`thumb${x.id === p.id ? ' on' : ''}`} onClick={() => go(i)}>
-              <div className="thumb-box"><PhoneMock platform={x.platform} screen={x.screen} image={x.image} className="thumb-phone" /></div>
+              <div className="thumb-box"><PhoneMock platform={x.platform} device={x.device} screen={x.screen} image={x.image} photo={x.photo} className="thumb-phone" /></div>
               <b>{x.title}</b>
               <small>{companyById[x.company].short} · {x.year}</small>
             </button>

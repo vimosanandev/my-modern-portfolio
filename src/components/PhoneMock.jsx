@@ -63,10 +63,24 @@ function KoobitsScreen() {
 
 const screens = { kds: KdsScreen, fynkle: FynkleScreen, cvs: CvsScreen, koobits: KoobitsScreen }
 
-export default function PhoneMock({ platform = 'android', screen = 'kds', image, label, withCase = false, style, className = '' }) {
+// `device`: 'phone' (default) or 'tablet' (portrait, Android bezel). `tilt`: 3D turn, needs `perspective` on the parent.
+// `photo`: a ready-made device render (transparent image, frame + screen). Replaces the CSS bezel entirely.
+// `photoTilt`: the same render with the 3D turn baked in. Used when `tilt` is set, so the browser
+// never resamples the image through a 3D transform (that is what made it look soft).
+export default function PhoneMock({ platform = 'android', device = 'phone', screen = 'kds', image, photo, photoTilt, label, withCase = false, tilt = false, style, className = '' }) {
   const Screen = screens[screen] || KdsScreen
+  if (photo) {
+    const cls = ['phone', 'phone-photo', device === 'tablet' && 'phone-photo-tablet', tilt && 'phone-photo-tilted', className].filter(Boolean).join(' ')
+    return (
+      <div className={cls} style={style}>
+        <img src={tilt && photoTilt ? photoTilt : photo} alt="" decoding="async" />
+        {label && <span className="phone-label">{label}</span>}
+      </div>
+    )
+  }
+  const cls = ['phone', `phone-${platform}`, device === 'tablet' && 'phone-tablet', tilt && 'phone-tilt', className].filter(Boolean).join(' ')
   return (
-    <div className={`phone phone-${platform} ${className}`} style={style}>
+    <div className={cls} style={style}>
       {withCase && <div className="phone-case" />}
       <div className="phone-scr">
         {image ? <img src={image} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <Screen />}
