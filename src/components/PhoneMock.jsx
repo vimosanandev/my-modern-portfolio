@@ -70,7 +70,7 @@ const screens = { kds: KdsScreen, fynkle: FynkleScreen, cvs: CvsScreen, koobits:
 export default function PhoneMock({ platform = 'android', device = 'phone', screen = 'kds', image, photo, photoTilt, label, withCase = false, tilt = false, style, className = '' }) {
   const Screen = screens[screen] || KdsScreen
   if (photo) {
-    const cls = ['phone', 'phone-photo', device === 'tablet' && 'phone-photo-tablet', tilt && 'phone-photo-tilted', className].filter(Boolean).join(' ')
+    const cls = ['phone', 'phone-photo', (device === 'tablet' || device === 'tablet-portrait') && 'phone-photo-tablet', device === 'tablet-portrait' && 'phone-photo-portrait', tilt && 'phone-photo-tilted', className].filter(Boolean).join(' ')
     return (
       <div className={cls} style={style}>
         <img src={tilt && photoTilt ? photoTilt : photo} alt="" decoding="async" />

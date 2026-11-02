@@ -1,4 +1,5 @@
 const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+import { projects as projectList } from './projects'
 
 export const personalInfo = {
   name: 'Vimosanan Ahiladas',
@@ -17,7 +18,8 @@ export const personalInfo = {
   avatar: `${base}/assets/avatar.png`,
   years: 8.5,
   yearsLabel: '8+',
-  stats: { years: '8+', companies: 5, apps: 12 },
+  // Apps = the projects listed on the site, so the count never drifts from the list.
+  stats: { years: '8+', companies: 5, apps: projectList.length },
 }
 
 export const highlights = [
@@ -43,9 +45,11 @@ export const companies = [
     short: 'MW',
     name: 'Mammilway Inc',
     role: 'Senior Mobile Developer, Android',
-    location: 'Sachse, TX (Remote)',
+    location: 'San Jose, California',
     period: 'May 2026 - Present',
     current: true,
+    website: 'https://www.mammilway.com/',
+    linkedin: 'https://www.linkedin.com/company/mammilway',
   },
   {
     id: 'cvs-health',
@@ -54,6 +58,8 @@ export const companies = [
     role: 'Senior Mobile Developer, Android & Flutter',
     location: 'Richardson, TX (Remote)',
     period: 'May 2025 - May 2026',
+    website: 'https://www.cvs.com/',
+    linkedin: 'https://www.linkedin.com/company/cvshealth/',
   },
   {
     id: 'vendor-build',
@@ -62,6 +68,8 @@ export const companies = [
     role: 'Senior Mobile Developer, Android',
     location: 'San Jose, CA (Remote)',
     period: 'Aug 2024 - Apr 2025',
+    website: 'https://www.vendor-build.com/',
+    linkedin: 'https://www.linkedin.com/company/vendor-bulid',
   },
   {
     id: 'koobits',
@@ -70,6 +78,8 @@ export const companies = [
     role: 'Senior Mobile Developer, Android & Flutter',
     location: 'Singapore',
     period: 'Aug 2020 - Jul 2023',
+    website: 'https://www.koobits.com/',
+    linkedin: 'https://www.linkedin.com/company/koobits-learning',
     seen: true,
   },
   {
@@ -79,6 +89,7 @@ export const companies = [
     role: 'Mobile Developer, Android',
     location: 'Colombo, Sri Lanka',
     period: 'May 2018 - Nov 2019',
+    linkedin: 'https://www.linkedin.com/company/ellipsisconcepts/',
     seen: true,
   },
 ]
@@ -90,7 +101,7 @@ export const schools = [
 
 // Home tiles, one per section.
 export const tiles = [
-  { to: '/projects', tone: 'green', title: 'Projects', sub: '12 apps, 5 companies', chips: ['KDS', 'Fynkle', 'POS'] },
+  { to: '/projects', tone: 'green', title: 'Projects', sub: `${projectList.length} apps, 5 companies`, chips: ['KDS', 'Fynkle', 'POS'] },
   { to: '/technical', tone: 'amber', title: 'Technical', sub: 'Mobile · Backend · Tools', chips: ['Kotlin', 'Compose', 'Hilt'] },
   { to: '/companies', tone: 'violet', title: 'Companies', sub: 'Colombo → Singapore → Texas', chips: ['MW', 'CVS', 'KB'] },
   { to: '/personal', tone: 'blue', title: 'Personal', sub: '5 countries, 3 hobbies', chips: ['🇱🇰', '🇸🇬', '🇺🇸'] },

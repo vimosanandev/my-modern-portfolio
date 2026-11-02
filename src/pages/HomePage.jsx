@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { personalInfo, companies, schools, tiles, projects, companyById } from '../data/portfolio'
+import { personalInfo, companies, schools, tiles, projects, projectById, companyById } from '../data/portfolio'
 import PhoneMock from '../components/PhoneMock'
 import Icon from '../components/Icon'
 
@@ -62,9 +62,14 @@ function Hero() {
 
       <div className="hero-phones">
         <span className="eyebrow">Currently running</span>
-        <div className="duo">
-          <PhoneMock platform="android" screen="kds" withCase label="Android · Kotlin" className="duo-android" />
-          <PhoneMock platform="ios" screen="fynkle" withCase label="iOS · Flutter" className="duo-ios" />
+        {/* Real device renders of the two apps in production: KDS turned right, Fynkle in front turned left. */}
+        <div className="live-pair">
+          <Link to="/projects#kds" className="live-kds" aria-label="Kitchen Display System">
+            <img src={projectById.kds.photoTilt} alt="" decoding="async" />
+          </Link>
+          <Link to="/projects#fynkle" className="live-fynkle" aria-label="Fynkle">
+            <img src={projectById.fynkle.photoTilt} alt="" decoding="async" />
+          </Link>
         </div>
       </div>
     </section>
@@ -101,6 +106,9 @@ function Stories() {
 function Post({ p, i }) {
   const co = companyById[p.company]
   const [first, second, ...rest] = p.tags
+  // Real flat device render when the project has one; the pair's first device when it shows two.
+  const shot = p.extraFirst ? p.extra.photo : p.photo
+  const isTablet = p.device === 'tablet'
   return (
     <motion.article className="card post" custom={i} initial="hidden" animate="show" variants={rise}>
       <div className="who">
@@ -109,7 +117,11 @@ function Post({ p, i }) {
         <span className="dots">···</span>
       </div>
       <Link to={`/projects#${p.id}`} className="shot">
-        <PhoneMock platform={p.platform} screen={p.screen} style={{ width: 118, transform: 'translateY(20px)' }} />
+        {shot ? (
+          <img src={shot} alt="" decoding="async" className={isTablet ? 'shot-tablet' : 'shot-phone'} />
+        ) : (
+          <PhoneMock platform={p.platform} screen={p.screen} style={{ width: 118, transform: 'translateY(20px)' }} />
+        )}
       </Link>
       <div className="acts">
         <Icon name="heart" /><Icon name="chat" /><Icon name="send" />

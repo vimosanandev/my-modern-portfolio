@@ -1,6 +1,7 @@
 import { NavLink, Link } from 'react-router-dom'
 import { personalInfo, highlights, sections } from '../../data/portfolio'
 import Icon from '../Icon'
+import BrandMark from '../BrandMark'
 
 export default function Sidebar() {
   const { stats } = personalInfo
@@ -30,7 +31,7 @@ export default function Sidebar() {
         <div className="eyebrow" style={{ marginBottom: 8 }}>Highlights</div>
         <div className="side-hl">
           {highlights.map((h) => (
-            <Link key={h.id} to={h.to}><span>{h.short}</span>{h.label}</Link>
+            <Link key={h.id} to={h.to}><BrandMark name={h.id} title={h.label} />{h.label}</Link>
           ))}
         </div>
       </div>

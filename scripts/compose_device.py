@@ -1,23 +1,24 @@
 """Composite an app screen into a device frame PNG, then bake a 3D tilt.
 
 Usage: python3 -I compose_device.py FRAME SCREEN OUT_BASENAME
-         [--css-width 210] [--rot-y 16] [--rotate-frame 90] [--fit cover|contain]
+         [--css-width 210] [--rot-y 25] [--rotate-frame 90] [--fit cover|contain]
 
 Writes OUT_BASENAME.webp (flat) and OUT_BASENAME-tilt.webp (tilted), both sized
 for 3x displays at the given CSS width. Tilt: perspective 1100px, rotateY(rot-y)
 rotateX(4deg), origin at element center. Positive rot-y turns the screen to face
 right (left edge nearer), toward text placed to the right of the device.
 --rotate-frame turns a portrait frame to landscape before compositing.
+--hole X0,Y0,X1,Y1 sets the screen box when auto-detection can't find it (e.g. an island sits in the hole).
 --fit contain keeps the whole screen and fills any gap by stretching the screen's
 own edge rows/columns, instead of cropping (cover, the default).
 """
 import math
 import sys
-from PIL import Image, ImageChops
+from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
 DPX = 3  # device pixels per CSS pixel to target
 PERSPECTIVE = 1100.0
-ROT_Y = math.radians(16)
+ROT_Y = math.radians(25)
 ROT_X = math.radians(4)
 
 
@@ -58,8 +59,8 @@ def contain_fill(screen, hw, hh):
     return out
 
 
-def composite(frame, screen, fit='cover'):
-    x0, y0, x1, y1 = find_hole(frame)
+def composite(frame, screen, fit='cover', hole_box=None):
+    x0, y0, x1, y1 = hole_box or find_hole(frame)
     hw, hh = x1 - x0 + 1, y1 - y0 + 1
     if fit == 'contain':
         rs = contain_fill(screen, hw, hh)
@@ -71,6 +72,12 @@ def composite(frame, screen, fit='cover'):
         ox, oy = (rs.width - hw) // 2, (rs.height - hh) // 2
         rs = rs.crop((ox, oy, ox + hw, oy + hh))
     hole = ImageChops.invert(frame.getchannel('A')).crop((x0, y0, x1 + 1, y1 + 1))
+    # Keep only the transparent area connected to the screen's centre. The box's corners can reach past
+    # a rounded device body, where the outside is transparent too; without this the screen spills out there.
+    solid = hole.point(lambda v: 255 if v >= 128 else 0)
+    ImageDraw.floodfill(solid, (hole.width // 2, hole.height // 2), 128, thresh=0)
+    inside = solid.point(lambda v: 255 if v == 128 else 0).filter(ImageFilter.MaxFilter(5))
+    hole = ImageChops.multiply(hole, inside)
     out = Image.new('RGBA', frame.size, (0, 0, 0, 0))
     out.paste(rs, (x0, y0), hole)
     out.alpha_composite(frame)
@@ -135,13 +142,14 @@ def main():
     global ROT_Y
     frame_p, screen_p, out_base = sys.argv[1:4]
     css_w = float(arg('--css-width', 210))
-    ROT_Y = math.radians(float(arg('--rot-y', 16)))
+    ROT_Y = math.radians(float(arg('--rot-y', 25)))
     frame = Image.open(frame_p).convert('RGBA')
     rot = int(arg('--rotate-frame', 0))
     if rot:
         frame = frame.rotate(rot, expand=True, resample=Image.BICUBIC)
     screen = Image.open(screen_p).convert('RGBA')
-    flat = composite(frame, screen, arg('--fit', 'cover'))
+    hole_box = [int(n) for n in arg('--hole', None).split(',')] if arg('--hole', None) else None
+    flat = composite(frame, screen, arg('--fit', 'cover'), hole_box)
     flat_out = flat.resize((round(css_w * DPX), round(flat.height * css_w * DPX / flat.width)), Image.LANCZOS)
     save(flat_out, out_base + '.webp')
     tilted, tilt_css_w = tilt(flat, css_w)
